@@ -1,4 +1,5 @@
 from dotenv import load_dotenv
+from rich import print_json
 import os
 import requests
 
@@ -9,8 +10,7 @@ token = os.getenv("JSON_API_TOKEN")
 print(token)
 
 headers = {"Authorization": f"Bearer {token}"}
-print("HEADER SENT:", headers)
 
 r = requests.get(url, headers=headers)
 print(r.status_code)
-print(r.json())
+print_json(data = r.json())
