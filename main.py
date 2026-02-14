@@ -4,7 +4,7 @@ import requests
 
 load_dotenv()  # loads .env into environment variables
 
-url = "https://api.json-generator.com/templates/2ireVV0w37TX/data"
+url = os.getenv("ENDPOINT_URL")
 token = os.getenv("JSON_API_TOKEN")
 print(token)
 
