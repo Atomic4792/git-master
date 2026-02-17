@@ -1,16 +1,22 @@
-from dotenv import load_dotenv
-from rich import print_json
-import os
-import requests
+from model import get_data
+from view import print_table, get_row_num
+from random import sample
+from typing import List, Dict
 
-load_dotenv()  # loads .env into environment variables
+def randomize_rows(num_rows: int, table: list) -> List[Dict]:
+    random_row_nums = sample(range(0,len(table) -1), num_rows)
+    randized_table = []
+    for ran_row_num in random_row_nums:
+        randized_table.append(table[ran_row_num -1])
+    return randized_table
 
-url = os.getenv("ENDPOINT_URL")
-token = os.getenv("JSON_API_TOKEN")
-print(token)
 
-headers = {"Authorization": f"Bearer {token}"}
+def main_loop() -> None:
+    while True:
+        record_num = get_row_num()
+        if record_num not in [1, len(get_data)]:
+            continue
+        else:
+            print (print_table(randomize_rows(record_num, get_data)))
+            return
 
-r = requests.get(url, headers=headers)
-print(r.status_code)
-print_json(data = r.json())
