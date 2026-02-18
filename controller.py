@@ -14,7 +14,7 @@ def randomize_rows(num_rows: int, table: list) -> List[Dict]:
 def main_loop() -> None:
     while True:
         record_num = get_row_num()
-        if record_num not in [1, len(get_data)]:
+        if record_num not in range(1, len(get_data)):
             continue
         else:
             print (print_table(randomize_rows(record_num, get_data)))
