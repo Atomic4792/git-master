@@ -1,6 +1,6 @@
 from model import get_data
 from view import print_table
-from error_handler import int_prompt_validator
+from error_handler import int_prompt_validator,str_prompt_validator
 from random import sample
 from typing import List, Dict
 
@@ -17,5 +17,7 @@ def main_loop() -> None:
         record_num_condition = [i for i in range(1, len(get_data))]
         record_num = int_prompt_validator("How many rows would you like to see?: ",condition=record_num_condition)
         print(print_table(randomize_rows(record_num, get_data)))
+        if str_prompt_validator("start over?: ", ('yes', 'y')):
+            continue
         return
         

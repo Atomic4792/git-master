@@ -12,3 +12,10 @@ def int_prompt_validator(prompt: str, condition=None) -> int:
             return user_input
         else:
             print(f"{user_input} is not a valid input")
+
+def str_prompt_validator(prompt: str, condition: any) -> bool:
+    while True:
+        raw_input = input(prompt)
+        if raw_input in condition:
+            return True
+        return False
