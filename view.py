@@ -1,10 +1,11 @@
 from json import dumps
 from pandas import DataFrame, read_json
 from io import StringIO
+from error_handler import int_prompt_validator
 
-def get_row_num() -> int:
-    row_num = int(input("How many rows would you like to see?: "))
-    return row_num
+# def get_row_num() -> int:
+#     row_num = int(input("How many rows would you like to see?: "))
+#     return row_num
 
 
 def print_table(json_data: list) -> DataFrame:
